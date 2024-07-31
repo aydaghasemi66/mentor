@@ -37,6 +37,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'root',
 ]
 
 MIDDLEWARE = [
@@ -76,9 +77,9 @@ WSGI_APPLICATION = 'config.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'mentor',
+        'NAME': 'mentordb',
         'USER': 'admin',
-        'PASSWORD': 'password',
+        'PASSWORD': '1234',
         'HOST':'db',
         'PORT':'3306',
     }

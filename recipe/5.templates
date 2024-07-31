@@ -1,0 +1,22 @@
+base.html:
+{% load static %}
+<title>{% block 'title' %}{% endblock 'title' %}</title>
+{% static 'assets
+.css' %}
+{% block 'content'  %}
+
+{% endblock 'content' %}
+
+
+
+others:
+{% extends 'base.html' %}
+{% load static %}
+{% block 'title' %}Home{% endblock 'title' %}
+{% block 'content' %}
+{% endblock 'content' %}
+
+
+
+
+{% url 'root:home'%}
