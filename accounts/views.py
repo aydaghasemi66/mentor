@@ -19,7 +19,9 @@ def signupview(request):
     return render(request, 'registration/signup.html', {'form': form})
 
 def loginview(request):
-    if request.method == 'POST':
+    if request.user.is_authenticated:
+        return redirect('/')
+    elif request.method == 'POST':
         form = AuthenticationForm(data=request.POST)
         if form.is_valid():
             user = form.get_user()
