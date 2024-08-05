@@ -3,6 +3,8 @@ from .forms import SignUpForm
 from django.contrib.auth.forms import AuthenticationForm
 from root.views import home
 from django.contrib.auth import login as auth_login
+from django.contrib.auth import logout
+from django.contrib import messages
 # Create your views here.
 
 
@@ -26,3 +28,7 @@ def loginview(request):
     else:
         form = AuthenticationForm()
     return render(request, 'registration/login.html', {'form': form})
+def logoutview(request):
+    logout(request)
+    messages.success(request, 'logout successfully', 'success')
+    return redirect('/')
