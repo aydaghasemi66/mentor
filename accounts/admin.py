@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import CustomeUser
+from .models import CustomeUser, Profile
 from django.contrib.auth.admin import UserAdmin
 
 class CustomeUserAdmin(UserAdmin):
@@ -24,3 +24,4 @@ class CustomeUserAdmin(UserAdmin):
     readonly_fields = ('created_date','updated_date')  
 
 admin.site.register(CustomeUser, CustomeUserAdmin)
+admin.site.register(Profile)

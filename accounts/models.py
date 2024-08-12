@@ -44,4 +44,13 @@ class CustomeUser(AbstractBaseUser, PermissionsMixin):
     def __str__(self):
         return self.email
 
+class Profile(models.Model):
+    user= models.ForeignKey(CustomeUser, on_delete=models.CASCADE)
+    first_name= models.CharField(max_length=50)
+    last_name= models.CharField(max_length=50)
+    number = models.CharField(max_length=15)
+    address = models.CharField(max_length=200)
+    image = models.ImageField(upload_to='profile_images/')
 
+    def __str__(self):
+        return self.user.email
