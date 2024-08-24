@@ -1,8 +1,9 @@
 from django.shortcuts import render, redirect
-from .forms import AuthenticationForm, CustomUserCreationForm
+from .forms import AuthenticationForm, CustomUserCreationForm , Edit_Profile
 from django.contrib.auth import login, logout, authenticate
 from django.contrib.auth.decorators import login_required
 from django.contrib import messages
+from .models import Profile
 # Create your views here.
 def Login(request):
     if request.user.is_authenticated :
@@ -43,3 +44,14 @@ def Signup(request):
             else:
                 messages.add_message(request, messages.ERROR, 'Invalid email or password')
                 return redirect(request.path_info)
+            
+def edit_profile(request, pk):
+      if request.method == 'GET':
+           form = Edit_Profile()
+           return render(request,'registration/edit_profile.html', context={'form': form})
+      elif request.method == 'POST':
+           profile = Profile.objects.get(user=pk)
+           form = Edit_Profile(request.POST, request.FILES, instance=profile)
+           if form.is_valid():
+                form.save()
+                return redirect('root:home')

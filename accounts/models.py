@@ -45,7 +45,7 @@ class CustomeUser(AbstractBaseUser, PermissionsMixin):
         return self.email
 
 class Profile(models.Model):
-    user= models.ForeignKey(CustomeUser, on_delete=models.CASCADE)
+    user = models.OneToOneField(CustomeUser, on_delete=models.CASCADE)
     first_name= models.CharField(max_length=50)
     last_name= models.CharField(max_length=50)
     number = models.CharField(max_length=15)
@@ -54,3 +54,5 @@ class Profile(models.Model):
 
     def __str__(self):
         return self.user.email
+
+
