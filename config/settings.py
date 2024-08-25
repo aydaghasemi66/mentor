@@ -82,10 +82,11 @@ DATABASES = {
         'NAME': 'mentordb',
         'USER': 'admin',
         'PASSWORD': '1234',
-        'HOST':'db',
-        'PORT':'3306',
+        'HOST': 'db', 
+        'PORT': '3306',  
     }
 }
+
 
 # Password validation
 # https://docs.djangoproject.com/en/5.0/ref/settings/#auth-password-validators

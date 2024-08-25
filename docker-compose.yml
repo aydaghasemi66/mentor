@@ -9,27 +9,29 @@ services:
       MYSQL_DATABASE: mentordb
       MYSQL_USER: admin
       MYSQL_PASSWORD: 1234
-      MYSQL_ROOT_PASSWORD: 1234
+      MYSQL_ROOT_PASSWORD: 1234  # Ensure this matches across all services
     ports:
-      - "3307:3306"
+      - "3306:3306"  # Mapping external port 3307 to internal port 3306
     volumes:
       - db_data:/var/lib/mysql
+
   phpmyadmin:
     image: phpmyadmin/phpmyadmin
     container_name: my_phpmyadmin
     environment:
       PMA_HOST: db
-      MYSQL_ROOT_PASSWORD: example
+      MYSQL_ROOT_PASSWORD: 1234  # Ensure this matches the MYSQL_ROOT_PASSWORD in the `db` service
     ports:
       - "8080:80"
     depends_on:
       - db
+
   web:
     build: .
     container_name: mentor
     command: python manage.py runserver 0.0.0.0:8000
     volumes:
-      - .:/core
+      - .:/core  # Ensure this is correctly pointing to your Django app directory
     ports:
       - "8000:8000"
     depends_on:
@@ -37,7 +39,3 @@ services:
 
 volumes:
   db_data:
-
-
-
-
