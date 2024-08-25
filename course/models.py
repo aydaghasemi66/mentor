@@ -17,7 +17,7 @@ class Trainer(models.Model):
     linkedin = models.CharField(max_length=255)
     facebook = models.CharField(max_length=255)
     twitter = models.CharField(max_length=255)
-    image = models.ImageField(upload_to='teacher_images/')
+    image = models.ImageField(upload_to='media/teacher',default='media/teacher/default-teacher.png')
     status = models.BooleanField(default=True)
     updated_date = models.DateTimeField(auto_now_add=True)
 
@@ -32,7 +32,7 @@ class Category(models.Model):
         return self.title
     
 class Course(models.Model):
-    image = models.ImageField(upload_to='course',default='default.jpg')
+    image = models.ImageField(upload_to='media/course',default='media/course/default-course.jpg')
     category = models.ManyToManyField(Category)
     title = models.CharField(max_length=100)
     content = models.TextField()

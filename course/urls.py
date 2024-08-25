@@ -2,6 +2,8 @@ from django.urls import path, include
 from .views import *
 
 
-app_name = 'courses'
+app_name = 'course'
 
-urlpatterns = []
+urlpatterns = [
+    path("",courses,name='courses')
+]
