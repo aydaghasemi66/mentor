@@ -6,11 +6,11 @@ class CommentForm(forms.ModelForm):
 
     class Meta:
         model = Comment
-        fields = ['which_course', 'name', 'email', 'subject', 'message']
+        fields = ['which_course', 'user', 'email', 'subject', 'message']
 
 
 class ReplyForm(forms.ModelForm):
 
     class Meta:
         model = Reply
-        fields = ['which_comment', 'name', 'message']
+        fields = ['which_comment', 'user', 'message']

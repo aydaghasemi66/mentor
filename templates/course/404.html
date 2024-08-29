@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block 'title' %}course detail{% endblock 'title' %}
+{% block 'content' %}
+
+<section class="inner-page" id="contact-page">
+    <div class="container-fluid" id="page-hero">
+        <div class="row">
+            <div class="col-12">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-12 px-0">
+                            <h1>page not found!</h1>
+                            <nav aria-label="breadcrumb">
+                                <ol class="breadcrumb">
+                                    <li class="breadcrumb-item"><a href="{% url "root:home" %}">home page</a></li>
+                                    <li class="breadcrumb-item active" aria-current="page">404 error</li>
+                                </ol>
+                            </nav>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+   
+</section>
+
+{% endblock 'content' %}

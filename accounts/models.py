@@ -50,7 +50,7 @@ class Profile(models.Model):
     last_name= models.CharField(max_length=50)
     number = models.CharField(max_length=15)
     address = models.CharField(max_length=200)
-    image = models.ImageField(upload_to='profile_images/')
+    image = models.ImageField(upload_to='profile_images/', default='profile_images/default-user.jpg')
 
     def __str__(self):
         return self.user.email

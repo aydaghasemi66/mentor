@@ -5,7 +5,7 @@ import datetime
 class Skill(models.Model):
     name = models.CharField(max_length= 255)
     
-    def __str__(self) -> str:
+    def __str__(self):
         return self.name
     
 
@@ -17,22 +17,22 @@ class Trainer(models.Model):
     linkedin = models.CharField(max_length=255)
     facebook = models.CharField(max_length=255)
     twitter = models.CharField(max_length=255)
-    image = models.ImageField(upload_to='media/teacher',default='media/teacher/default-teacher.png')
+    image = models.ImageField(upload_to='teacher',default='teacher/default-teacher.jpg')
     status = models.BooleanField(default=True)
     updated_date = models.DateTimeField(auto_now_add=True)
 
-    def __str__(self) -> str:
+    def __str__(self):
         return self.info.username
 
 class Category(models.Model):
     title = models.CharField(max_length=255)
     status = models.BooleanField(default=True)
 
-    def __str__(self) -> str:
+    def __str__(self):
         return self.title
     
 class Course(models.Model):
-    image = models.ImageField(upload_to='media/course',default='media/course/default-course.jpg')
+    image = models.ImageField(upload_to='course/',default='course/default-course.jpg')
     category = models.ManyToManyField(Category)
     title = models.CharField(max_length=100)
     content = models.TextField()
@@ -49,7 +49,7 @@ class Course(models.Model):
     class Meta:
         ordering=['-created_date']
 
-    def __str__(self) -> str:
+    def __str__(self) :
         return self.title
     
     def snip(self):
@@ -61,7 +61,7 @@ class Course(models.Model):
 
 class Comment(models.Model):
     which_course = models.ForeignKey(Course,on_delete=models.CASCADE)
-    name = models.CharField(max_length=100)
+    user = models.ForeignKey(CustomeUser,on_delete=models.CASCADE)
     email = models.EmailField()
     subject = models.CharField(max_length=100)
     message = models.TextField()
@@ -72,12 +72,12 @@ class Comment(models.Model):
         ordering = ['-created_date']
 
     def __str__(self):
-        return self.name
+        return self.user.username
     
 
 class Reply(models.Model):
     which_comment = models.ForeignKey(Comment,on_delete=models.CASCADE)
-    name = models.CharField(max_length=100)
+    user = models.ForeignKey(CustomeUser,on_delete=models.CASCADE)
     message = models.TextField()
     created_date = models.DateTimeField(auto_now_add=True)
     status = models.BooleanField(default=False)
@@ -86,4 +86,4 @@ class Reply(models.Model):
         ordering = ['-created_date']
 
     def __str__(self):
-        return self.name
+        return self.user

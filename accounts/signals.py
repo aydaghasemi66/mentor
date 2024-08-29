@@ -9,3 +9,9 @@ def create_or_update_user_profile(sender, instance, created, **kwargs):
     else:
         instance.profile.save()
 
+@reciver(post_save, sender=Profile)
+def create_profile(sender, instance, created, **kwargs):
+    if created:
+        user = CustomeUser.objects.get(email=instance.user.email)
+        user.is_verified = True
+        user.save()
