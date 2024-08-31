@@ -1,7 +1,7 @@
 /**
 * Template Name: Mentor
 * Template URL: https://bootstrapmade.com/mentor-free-education-bootstrap-theme/
-* Updated: Jun 29 2024 with Bootstrap v5.3.3
+* Updated: Aug 07 2024 with Bootstrap v5.3.3
 * Author: BootstrapMade.com
 * License: https://bootstrapmade.com/license/
 */
@@ -412,6 +412,7 @@ h6 {
 
   .navmenu ul {
     display: none;
+    list-style: none;
     position: absolute;
     inset: 60px 20px 20px 20px;
     padding: 10px 0;

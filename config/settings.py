@@ -40,6 +40,7 @@ INSTALLED_APPS = [
     'root',
     'accounts',
     'course',
+    'compressor',
 ]
 
 MIDDLEWARE = [
@@ -105,7 +106,15 @@ AUTH_PASSWORD_VALIDATORS = [
         'NAME': 'django.contrib.auth.password_validation.NumericPasswordValidator',
     },
 ]
+SITE_ID = 3
 
+COMPRESS_ENABLED = True
+
+STATICFILES_FINDERS = (
+    'django.contrib.staticfiles.finders.FileSystemFinder',
+    'django.contrib.staticfiles.finders.AppDirectoriesFinder',
+    'compressor.finders.CompressorFinder',
+)
 
 # Internationalization
 # https://docs.djangoproject.com/en/5.0/topics/i18n/
