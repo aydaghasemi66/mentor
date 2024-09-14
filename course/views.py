@@ -5,6 +5,8 @@ from django.contrib import messages
 from course.forms import CommentForm,ReplyForm
 from root.forms import NewsLetterForm
 from django.contrib.auth.decorators import login_required
+from rest_framework.decorators import api_view
+from rest_framework.response import Response
 # Create your views here.
 def courses(request,cat=None, trainer=None):
     category = Category.objects.all()
@@ -175,3 +177,8 @@ def edit_reply(request, id):
             return redirect (request.path_info)
         
 
+@api_view()
+def apitest(request):
+    return Response({
+        'name':'test'
+    })

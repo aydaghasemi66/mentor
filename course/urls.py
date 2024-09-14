@@ -11,4 +11,6 @@ urlpatterns = [
     path("search/", courses, name='courses_by_search'),
     path("course_detail/<int:id>", course_detail, name='course_detail'),
     path("comment/reply/<int:id>",reply,name="reply"),
+    path("api/V1/", include('course.api.V1.urls')),
+
 ]

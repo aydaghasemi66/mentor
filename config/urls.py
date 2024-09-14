@@ -25,6 +25,7 @@ urlpatterns = [
     path("",include('root.urls')),
     path("accounts/", include('accounts.urls')),
     path("courses/",include('course.urls')),
+    path("api/auth", include('rest_framework.urls')),
 ]
 
 
