@@ -55,3 +55,5 @@ def edit_profile(request, pk):
            if form.is_valid():
                 form.save()
                 return redirect('root:home')
+           
+

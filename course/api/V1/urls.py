@@ -7,8 +7,10 @@ app_name = 'course-api'
 router = DefaultRouter()
 router.register('courses', CourseView, basename='courses')
 router.register('categories', CategoryView, basename='categories')
-
+router.register('skills', CategoryView, basename='skills')
+router.register('trainer', TrainerView, basename='trainer')
 urlpatterns = router.urls
+
 
 
 # urlpatterns = [

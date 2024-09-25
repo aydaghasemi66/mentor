@@ -11,7 +11,7 @@ from rest_framework.generics import ListAPIView, ListCreateAPIView, UpdateAPIVie
 from rest_framework.mixins import CreateModelMixin, DestroyModelMixin, ListModelMixin, RetrieveModelMixin, UpdateModelMixin
 from rest_framework import viewsets
 from rest_framework.filters import SearchFilter, OrderingFilter
-
+from django_filters.rest_framework import DjangoFilterBackend
 
 
 
@@ -169,7 +169,21 @@ from rest_framework.filters import SearchFilter, OrderingFilter
 class CourseView(viewsets.ModelViewSet):
     queryset = Course.objects.filter(status=True)
     serializer_class = CourseSerializer
+    filter_backends = [DjangoFilterBackend]
+    filterset_fields = ['category', 'title']
+    search_fields = ['username', 'email']
 
 class CategoryView(viewsets.ModelViewSet):
     queryset = Category.objects.all()
     serializer_class = CategorySerializer
+
+
+class SkillsView(viewsets.ModelViewSet):
+    serializer_class = SkillsSerializer
+    queryset = Skill.objects.all()
+
+
+class TrainerView(viewsets.ModelViewSet):
+    serializer_class = TrainerSerializer
+    queryset = Trainer.objects.filter(status=True)
+    
